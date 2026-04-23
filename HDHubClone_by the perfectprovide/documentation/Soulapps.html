@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Website - User Manual</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0c0c0c;
+      color: #ccc;
+      line-height: 1.7;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px 40px;
+    }
+    h1, h2, h3 {
+      color: #fff;
+      border-bottom: 2px solid #f57f26;
+      padding-bottom: 10px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      border-bottom: none;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 1.2em;
+      color: #00c6ff;
+      margin-top: -20px;
+      margin-bottom: 40px;
+    }
+    a {
+      color: #00c6ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    code {
+      background-color: #2c2c2c;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: "Courier New", Courier, monospace;
+      color: #f0f0f0;
+    }
+    pre {
+      background-color: #2c2c2c;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #444;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .note {
+      background-color: rgba(228, 0, 86, 0.1);
+      border-left: 4px solid #e40056;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .note strong {
+      color: #ff416c;
+    }
+    ul.nav {
+      list-style: none;
+      padding: 0;
+      background: #222;
+      border-radius: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    ul.nav li a {
+      display: block;
+      padding: 15px 25px;
+      font-weight: bold;
+    }
+    ul.nav li a:hover {
+      background: #333;
+      text-decoration: none;
+    }
+    section {
+      padding-top: 40px;
+    }
+
+    /* ✅ New Added Section */
+    .telegram-box {
+      background: #222;
+      padding: 25px;
+      border-radius: 8px;
+      margin-top: 30px;
+      text-align: center;
+      line-height: 1.8;
+      box-shadow: 0 0 10px rgba(0, 198, 255, 0.1);
+    }
+    .telegram-box a {
+      font-weight: bold;
+      color: #00c6ff;
+    }
+    .telegram-box p {
+      font-size: 1.1em;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Movie Website - User Manual</h1>
+    <p class="subtitle">by <strong>Soulapps</strong> | Telegram: <strong>@Soulapps_01</strong></p>
+
+    <ul class="nav">
+      <li><a href="#setup">Initial Setup</a></li>
+      <li><a href="#admin-guide">Admin Panel Guide</a></li>
+      <li><a href="#customization">Customization</a></li>
+    </ul>
+
+    <section id="setup">
+      <h2>Part 1: Initial Setup (Ek Baar Ka Kaam)</h2>
+      <p>This is the work you only need to do once to get the website online.</p>
+      <h3>Step 1: Database Setup</h3>
+      <ol>
+        <li>Go to your hosting control panel (like cPanel) and open <strong>phpMyAdmin</strong>.</li>
+        <li>Create a new, empty database (e.g., <code>hdhub_db</code>).</li>
+        <li>Click on your new database, go to the <strong>SQL</strong> tab, and run the SQL code provided to create all necessary tables.</li>
+      </ol>
+
+      <h3>Step 2: Upload All Files</h3>
+      <p>Upload all the project files and folders (<code>admin/</code>, <code>config/</code>, <code>uploads/</code>, <code>index.php</code>, etc.) to your website's main directory.</p>
+
+      <h3>Step 3: Connect to the Database (Most Important)</h3>
+      <p>Open the file: <code>/config/db.php</code>. You must change the details to match your database.</p>
+      <pre><code>&lt;?php
+// --- DATABASE CONNECTION ---
+$db_host = 'localhost';
+$db_user = 'your_database_username'; // &lt;-- CHANGE THIS
+$db_pass = 'your_database_password'; // &lt;-- CHANGE THIS
+$db_name = 'hdhub_db';               // &lt;-- CHANGE THIS
+?&gt;</code></pre>
+    </section>
+
+    <section id="admin-guide">
+      <h2>Part 2: Admin Panel Ko Kaise Use Karein</h2>
+      <p>Here is how you manage everything on your site.</p>
+
+      <h3>Step 1: Login</h3>
+      <p>Go to your admin panel URL: <code>www.yoursite.com/admin/</code></p>
+      <ul>
+        <li><strong>Username:</strong> <code>admin</code></li>
+        <li><strong>Password:</strong> <code>admin123</code></li>
+      </ul>
+
+      <h3>Step 2: Add Categories (Menu items)</h3>
+      <ol>
+        <li>In the admin panel, click on the <strong>Categories</strong> tab.</li>
+        <li>Fill in the form:
+          <ul>
+            <li><strong>Button Name:</strong> The text that shows on the button (e.g., "Hollywood Movies").</li>
+            <li><strong>Style Class:</strong> The button's color (e.g., <code>style-1</code>, <code>style-2</code>).</li>
+            <li><strong>Sort Order:</strong> A number to control the order (<code>0</code> appears first).</li>
+          </ul>
+        </li>
+        <li>Click "Add". This category will now appear on the homepage and in the mobile menu.</li>
+      </ol>
+
+      <h3>Step 3: Add a New Movie</h3>
+      <ol>
+        <li>Click on the <strong>Add/Edit Movie</strong> tab.</li>
+        <li>Fill in the form:
+          <ul>
+            <li><strong>Movie Poster:</strong> Upload a poster from your computer.</li>
+            <li><strong>Release Date:</strong> Used for the red date tag on the movie post.</li>
+            <li><strong>Quality String:</strong> Text below the title (e.g., "480p, 720p, 1080p").</li>
+            <li><strong>Primary Quality Tag:</strong> Text for the purple tag (e.g., "720P", "HD-CAM").</li>
+            <li><strong>Categories:</strong> Hold <code>Ctrl</code> (or <code>Cmd</code> on Mac) to select multiple categories.</li>
+            <li><strong>Watch & Download Links:</strong> Click "Add Link" to create rows for different qualities.</li>
+          </ul>
+        </li>
+        <div class="note">
+          <strong>Important:</strong> For the "Watch Link", you must use an <strong>embeddable URL</strong> (like <code>https://www.youtube.com/embed/VIDEO_ID</code>), not a regular watch link.
+        </div>
+        <li>Click "Save Movie".</li>
+      </ol>
+
+      <h3>Step 4: Search and Edit a Movie</h3>
+      <ol>
+        <li>Click on the <strong>Movies</strong> tab.</li>
+        <li>Use the <strong>Search Bar</strong> to find the movie you want to edit.</li>
+        <li>Click the <strong>Edit</strong> button. You will be taken to the form with all the movie's information pre-filled.</li>
+        <li>Make your changes and click "Save Movie".</li>
+      </ol>
+    </section>
+
+    <section id="customization">
+      <h2>Part 3: Website Ko Customize Kaise Karein</h2>
+
+      <h3>Logo Kaise Change Karein (How to Change the Logo)</h3>
+      <p>Your website logo is located in the <code>header.php</code> file.</p>
+      <ol>
+        <li>Open the file: <strong><code>header.php</code></strong>.</li>
+        <li>Find this section of code (around line 21):
+          <pre><code>&lt;div class="header-logo"&gt;
+  &lt;!-- THIS IS THE LINE YOU NEED TO CHANGE --&gt;
+  &lt;a href="/"&gt;&lt;img src="https://blogger.googleusercontent.com/...long_link..." alt="Logo"&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+        </li>
+        <li>To change the logo, replace the link inside the <code>src="..."</code> attribute.
+          <p>First, upload your new logo image to your website (e.g., into the <code>uploads/</code> folder). Then, change the line as shown below.</p>
+          <p><strong>Example:</strong></p>
+          <pre><code>&lt;!-- FROM THIS: --&gt;
+&lt;img src="https://blogger.googleusercontent.com/...long_link..." alt="Logo"&gt;
+
+&lt;!-- TO THIS: --&gt;
+&lt;img src="/uploads/my-new-logo.png" alt="My Site Name"&gt;</code></pre>
+        </li>
+        <li>Save the <code>header.php</code> file. Your new logo will now appear on every page.</li>
+      </ol>
+    </section>
+
+    <!-- ✅ New Section Added Below -->
+    <section id="more-apps">
+      <h2>More Apps & Hire Us</h2>
+      <div class="telegram-box">
+        <p>📱 <strong>Explore More Apps:</strong><br>
+          <a href="https://t.me/Soulapps_01" target="_blank">@Soulapps_01</a>
+        </p>
+        <p>💼 <strong>Hire Us for Custom Projects:</strong><br>
+          <a href="https://t.me/Soulapps_01" target="_blank">@Soulapps_01</a>
+        </p>
+        <p style="font-size: 0.95em; color: #aaa;">We build mobile-friendly, fast, and powerful movie sites & apps.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ✅ Optional Footer -->
+  <footer>
+    © 2025 Soulapps. Built with ❤️ | <a href="https://t.me/Soulapps_01" target="_blank">Contact @Soulapps_01</a>
+  </footer>
+</body>
+</html>
